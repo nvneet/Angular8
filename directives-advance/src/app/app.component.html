@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onlyOdd = !onlyOdd"> Show only odd numbers </button>
+      <br><br>
+      <ul class="list-group">
+
+        <div *ngIf="onlyOdd">
+          <li class="list-group-item" [ngClass]="{ odd: odd % 2 !== 0}" [ngStyle]="{backgroundColor: odd % 2 !==0 ? 'Yellow' : 'transparent'}" *ngFor="let odd of oddNumbers"> {{ odd }} </li>
+        </div>
+
+        <!-- <div *ngIf="!onlyOdd">
+          <li class="list-group-item" [ngClass]="{ odd: even % 2 !== 0}" [ngStyle]="{backgroundColor: even % 2 !==0 ? 'transparent' : '#D063C8'}" *ngFor="let even of evenNumbers"> {{ even }} </li>
+        </div> -->
+
+        <!-- *ngIf (behind the scenes) behaves under the hood as [ngIf] propert binding in ng-template -->
+        <!-- <ng-template [ngIf]="!onlyOdd">
+          <div>
+            <li class="list-group-item" [ngClass]="{ odd: even % 2 !== 0}" [ngStyle]="{backgroundColor: even % 2 !==0 ? 'transparent' : '#D063C8'}" *ngFor="let even of evenNumbers"> {{ even }} </li>
+          </div>
+        </ng-template> -->
+
+         <div *appUnless="onlyOdd">
+          <li class="list-group-item" [ngClass]="{ odd: even % 2 !== 0}" [ngStyle]="{backgroundColor: even % 2 !==0 ? 'transparent' : '#D063C8'}" *ngFor="let even of evenNumbers"> {{ even }} </li>
+        </div>
+
+      </ul>
+      <p appBasicHighlight> Styled with basic-highlight Directive </p>
+      <!--p appBetterHighlighter> Styled with better-highlight Directive </p-->
+      <!--p appBetterHighlighter [defaultCOlor]="'#DAF7A6'" [highlightColor]="'#FF5733'"> Styled with better-highlight Directive </p-->      
+      <p [appBetterHighlighter]="'#FF5733'" defaultCOlor="#DAF7A6" > Styled with better-highlight Directive </p>
+
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5"> value is 5 </p>
+        <p *ngSwitchCase="10"> value is 10 </p> 
+        <p *ngSwitchCase="100"> value is 100 </p>
+        <p *ngSwitchDefault> value is Default </p>
+      </div>
+
+    </div>
+  </div>
+</div>

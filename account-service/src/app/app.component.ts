@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountsService } from './accounts.services';
+import { LoggingService } from './logging.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [AccountsService]
+  // providers: [LoggingService,AccountsService] //services are provided at app-module level
 })
 export class AppComponent implements OnInit{
 

@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
+import {EventEmitter, Injectable } from "@angular/core";
 import { LoggingService } from "./logging.service";
 
-@Injectable()
+@Injectable() // to enable injecting LoggingService in AccountService
 export class AccountsService {
 
     accounts = [
@@ -18,6 +18,10 @@ export class AccountsService {
           status: 'unknown'
         }
       ];
+
+      // create an event and instead of trigger this in updateStatus method, we will do in AccountComponent
+      statusUpdated = new EventEmitter<string>();
+
 
       constructor(private loggingService: LoggingService){}
 
